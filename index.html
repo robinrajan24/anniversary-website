@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Celebrating our beautiful 7th Propose Anniversary — a digital love letter experience">
+    <title>💕 Happy 8th Propose Anniversary 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- ========== SCREEN 1: ENVELOPE ========== -->
+    <section class="screen envelope-screen" id="envelopeScreen">
+        <div class="floral-corner floral-top-left"></div>
+        <div class="floral-corner floral-top-right"></div>
+        <div class="floral-corner floral-bottom-left"></div>
+        <div class="floral-corner floral-bottom-right"></div>
+
+        <div class="envelope-container">
+            <!-- Sticky Note -->
+            <div class="sticky-note">
+                <span class="sticky-tape"></span>
+                <span class="note-icon">💌</span>
+                <p>Something special awaits you inside…<span class="note-sub">~ tap anywhere to open ~</span></p>
+            </div>
+
+            <!-- Envelope -->
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="envelope-bow">
+                        <span class="envelope-bow-center"></span>
+                        <span class="envelope-bow-tail-left"></span>
+                        <span class="envelope-bow-tail-right"></span>
+                    </div>
+                    <p class="envelope-text">For You, My Love</p>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="hint-text">✨ Tap anywhere to open your surprise ✨</p>
+    </section>
+
+    <!-- ========== SCREEN 2: POSTCARD + MEMORIES ========== -->
+    <section class="screen postcard-screen hidden" id="postcardScreen">
+        
+        <!-- Floating petals -->
+        <div class="petals-container" id="petalsContainer"></div>
+
+        <!-- Floating Background Memory Photos -->
+        <div class="bg-photos-container" id="bgPhotosContainer">
+            <!-- Photos injected by JS as floating background -->
+        </div>
+
+        <div class="postcard-layout">
+            <!-- Stamp-style Postcard -->
+            <div class="stamp-postcard" id="postcard">
+                <div class="stamp-inner">
+                    <!-- Left: Photo Side -->
+                    <div class="stamp-photo-side">
+                        <div class="stamp-photo-frame">
+                            <img src="images/2026_01_10_10_18_25_IMG_7636.jpg" alt="Our memory" class="stamp-photo">
+                        </div>
+                    </div>
+                    <!-- Right: Message Side -->
+                    <div class="stamp-text-side">
+                        <h1 class="stamp-title">Happy 8th Propose Anniversary Ponnna</h1>
+                        <div class="stamp-divider"><span>💕</span></div>
+                        <p class="stamp-message">
+                            Eight years ago,<br>
+                            I found my forever in you.<br><br>
+                            Every day since has been<br>
+                            a beautiful dream I never<br>
+                            want to wake up from.<br><br>
+                            <em>Thank you for making<br>
+                            my world so perfect.<br>
+                            I love you endlessly. 🌹</em>
+                        </p>
+                        <div class="stamp-signature">
+                            I love you ponnaaa 💗
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Music control -->
+        <button class="music-toggle" id="musicToggle" title="Toggle Music">
+            <span class="music-icon">🎵</span>
+        </button>
+    </section>
+
+    <!-- Background Music (royalty-free romantic piano) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2024/11/28/audio_3e60e5f27f.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

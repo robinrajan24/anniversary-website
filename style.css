@@ -1,0 +1,909 @@
+/* =============================================
+   7th Propose Anniversary — Romantic Stylesheet
+   ============================================= */
+
+/* CSS Custom Properties / Design Tokens */
+:root {
+    --pink-soft: #f8c8d4;
+    --pink-medium: #f2a6b8;
+    --pink-deep: #e88ca3;
+    --cream: #fef6f0;
+    --cream-warm: #fdf0e5;
+    --lavender: #e8d5f0;
+    --lavender-light: #f3eaf8;
+    --peach: #fde2c8;
+    --peach-light: #fef0e2;
+    --rose-gold: #c7929a;
+    --blush: #fff0f3;
+    --white: #ffffff;
+    --text-dark: #5a3e4b;
+    --text-soft: #8b6b7a;
+    --shadow-soft: rgba(200, 140, 160, 0.2);
+    --shadow-medium: rgba(200, 140, 160, 0.35);
+
+    --font-handwritten: 'Dancing Script', cursive;
+    --font-elegant: 'Playfair Display', Georgia, serif;
+    --font-body: 'Quicksand', 'Segoe UI', sans-serif;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: #faf5ef;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ---- Floating Hearts Background ---- */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-hearts .heart {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: floatHeart 8s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10vh) rotate(360deg) scale(1.2);
+    }
+}
+
+/* ---- Screen Layout ---- */
+.screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ---- Floral Corners ---- */
+.floral-corner {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.floral-top-left {
+    top: 20px;
+    left: 20px;
+    background: radial-gradient(circle at 30% 30%, var(--pink-soft) 0%, transparent 70%);
+    border-radius: 0 0 100% 0;
+}
+
+.floral-top-left::before {
+    content: '🌸';
+    font-size: 3rem;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.floral-top-right {
+    top: 20px;
+    right: 20px;
+    background: radial-gradient(circle at 70% 30%, var(--lavender) 0%, transparent 70%);
+    border-radius: 0 0 0 100%;
+}
+
+.floral-top-right::before {
+    content: '🌺';
+    font-size: 3rem;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.floral-bottom-left {
+    bottom: 20px;
+    left: 20px;
+    background: radial-gradient(circle at 30% 70%, var(--peach) 0%, transparent 70%);
+    border-radius: 0 100% 0 0;
+}
+
+.floral-bottom-left::before {
+    content: '🌷';
+    font-size: 3rem;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+.floral-bottom-right {
+    bottom: 20px;
+    right: 20px;
+    background: radial-gradient(circle at 70% 70%, var(--pink-soft) 0%, transparent 70%);
+    border-radius: 100% 0 0 0;
+}
+
+.floral-bottom-right::before {
+    content: '🌹';
+    font-size: 3rem;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+/* ============================================
+   ENVELOPE SCREEN
+   ============================================ */
+.envelope-screen {
+    background: radial-gradient(ellipse at 50% 50%, rgba(253, 240, 228, 0.5) 0%, transparent 70%);
+    cursor: pointer;
+}
+
+.envelope-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Sticky Note ---- */
+.sticky-note {
+    position: relative;
+    background: linear-gradient(145deg, #fffde7, #fff9c4);
+    padding: 22px 30px 18px;
+    border-radius: 3px;
+    box-shadow: 
+        3px 5px 14px rgba(0,0,0,0.08),
+        inset 0 0 30px rgba(255, 249, 196, 0.5);
+    transform: rotate(-4deg);
+    max-width: 280px;
+    text-align: center;
+    animation: stickyBob 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+.sticky-note .note-icon {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sticky-note p {
+    font-family: var(--font-handwritten);
+    font-size: 1.15rem;
+    color: #6d4c5e;
+    line-height: 1.6;
+}
+
+.sticky-note .note-sub {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: var(--rose-gold);
+    font-style: italic;
+}
+
+.sticky-tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    width: 70px;
+    height: 18px;
+    background: rgba(255, 230, 180, 0.65);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+@keyframes stickyBob {
+    0%, 100% { transform: rotate(-4deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-6px); }
+}
+
+/* ---- Envelope (White textured with coral border & bow) ---- */
+.envelope {
+    position: relative;
+    width: 380px;
+    height: 250px;
+    cursor: pointer;
+    perspective: 800px;
+}
+
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #fefefe 0%, #faf6f1 40%, #f5efe8 100%);
+    border-radius: 6px;
+    box-shadow: 
+        0 10px 35px rgba(0,0,0,0.08),
+        0 3px 12px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+    border: 1.5px solid #e8a0a0;
+}
+
+/* Inner coral border line */
+.envelope-body::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(220, 140, 140, 0.4);
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* Ribbon bow decoration */
+.envelope-bow {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.envelope-bow::before,
+.envelope-bow::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    width: 20px;
+    height: 14px;
+    border: 1.5px solid #d4908f;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.envelope-bow::before {
+    left: 2px;
+    transform: rotate(-15deg);
+}
+
+.envelope-bow::after {
+    right: 2px;
+    transform: rotate(15deg);
+}
+
+.envelope-bow-center {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #d4908f;
+    border-radius: 50%;
+}
+
+.envelope-bow-tail-left,
+.envelope-bow-tail-right {
+    position: absolute;
+    bottom: -5px;
+    width: 1.5px;
+    height: 15px;
+    background: #d4908f;
+}
+
+.envelope-bow-tail-left {
+    left: 18px;
+    transform: rotate(15deg);
+}
+
+.envelope-bow-tail-right {
+    right: 18px;
+    transform: rotate(-15deg);
+}
+
+/* Diagonal lines meeting at bow (like the reference envelope) */
+.envelope-body::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    height: 50%;
+    clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 0, 50% 95%, 0 0);
+    border-top: none;
+    background: linear-gradient(to bottom right, transparent 48%, rgba(220, 140, 140, 0.35) 48%, rgba(220, 140, 140, 0.35) 52%, transparent 52%),
+                linear-gradient(to bottom left, transparent 48%, rgba(220, 140, 140, 0.35) 48%, rgba(220, 140, 140, 0.35) 52%, transparent 52%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.envelope-heart {
+    display: none;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+.envelope-text {
+    font-family: var(--font-handwritten);
+    font-size: 1.1rem;
+    color: #7a5c5c;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    z-index: 2;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(180deg, #faf6f1 0%, #f3ece4 100%);
+    border-radius: 6px 6px 0 0;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    z-index: 2;
+    transform-origin: top center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid #e8a0a0;
+    border-bottom: none;
+}
+
+.envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.opened .envelope-body {
+    animation: envelopeGlow 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes envelopeGlow {
+    0% { box-shadow: 0 10px 35px rgba(0,0,0,0.08); }
+    50% { box-shadow: 0 10px 50px rgba(220, 140, 140, 0.3), 0 0 30px rgba(253, 240, 228, 0.4); }
+    100% { box-shadow: 0 10px 35px rgba(0,0,0,0.08); }
+}
+
+/* ---- Open Button (hidden — click anywhere to open) ---- */
+.open-btn {
+    display: none;
+}
+
+/* ---- Hint Text ---- */
+.hint-text {
+    margin-top: 30px;
+    font-family: var(--font-handwritten);
+    font-size: 1.05rem;
+    color: #b08a8a;
+    opacity: 0.8;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* ============================================
+   POSTCARD SCREEN
+   ============================================ */
+.postcard-screen {
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(253, 240, 228, 0.4) 0%, transparent 60%);
+}
+
+/* ---- Petals Animation ---- */
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -30px;
+    opacity: 0;
+    font-size: 1.5rem;
+    animation: petalFall linear infinite;
+}
+
+@keyframes petalFall {
+    0% {
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100px) rotate(720deg) translateY(100vh);
+    }
+}
+
+/* ---- Floating Background Photos ---- */
+.bg-photos-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-photo {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    opacity: 0.6;
+    animation: floatBgPhoto linear forwards;
+    border: 8px solid #fdfbf7;
+    border-bottom: 25px solid #fdfbf7;
+    /* Performance optimizations for smooth floating */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@keyframes floatBgPhoto {
+    0% { transform: translate3d(0, 110vh, 0) rotate(var(--rot-start, 0deg)); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { transform: translate3d(0, -30vh, 0) rotate(var(--rot-end, 30deg)); opacity: 0; }
+}
+
+/* ---- Postcard Layout ---- */
+.postcard-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* ---- Stamp-style Postcard ---- */
+.stamp-postcard {
+    position: relative;
+    padding: 20px;
+    max-width: 880px;
+    width: 95%;
+    margin: 0 auto;
+    filter: drop-shadow(0 15px 35px rgba(80, 60, 60, 0.15));
+    animation: postcardReveal 1s ease-out;
+}
+
+/* Scalloped edge background */
+.stamp-postcard::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #fcf9f2; /* light cream */
+    z-index: -2;
+    /* CSS Mask for scalloped stamp edges */
+    -webkit-mask-image: radial-gradient(circle at 10px 10px, transparent 10px, black 10.5px);
+    -webkit-mask-size: 20px 20px;
+    -webkit-mask-position: -10px -10px;
+    mask-image: radial-gradient(circle at 10px 10px, transparent 10px, black 10.5px);
+    mask-size: 20px 20px;
+    mask-position: -10px -10px;
+}
+
+/* Solid inner background to cover the holes in the middle */
+.stamp-postcard::after {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    background: #fcf9f2;
+    z-index: -1;
+}
+
+@keyframes postcardReveal {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.stamp-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 10px;
+    align-items: center;
+}
+
+/* Left: Photo Side */
+.stamp-photo-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stamp-photo-frame {
+    background: #fff;
+    padding: 10px 10px 35px 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    transform: rotate(-3deg);
+    transition: transform 0.4s ease;
+    width: 100%;
+    max-width: 340px;
+}
+
+.stamp-photo-frame:hover {
+    transform: rotate(0deg) scale(1.03);
+    z-index: 20;
+}
+
+.stamp-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+}
+
+/* Right: Text Side */
+.stamp-text-side {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.stamp-title {
+    font-family: var(--font-handwritten);
+    font-size: 2.2rem;
+    color: #8c6b5d;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.stamp-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 10px 0 20px;
+}
+
+.stamp-divider::before,
+.stamp-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(140, 107, 93, 0.4), transparent);
+}
+
+.stamp-divider span {
+    font-size: 1rem;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.stamp-message {
+    font-family: var(--font-elegant);
+    font-size: 1.1rem;
+    color: #5a4740;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.stamp-message em {
+    color: #b08d7f;
+    font-style: italic;
+}
+
+.stamp-signature {
+    font-family: var(--font-handwritten);
+    font-size: 1.5rem;
+    color: #8c6b5d;
+}
+
+@media (max-width: 768px) {
+    .stamp-postcard {
+        padding: 15px;
+        width: 86%;
+    }
+    .stamp-inner {
+        flex-direction: column;
+        gap: 25px;
+        padding: 5px;
+    }
+    .stamp-photo-side {
+        width: 100%;
+    }
+    .stamp-photo-frame {
+        max-width: 260px;
+        padding: 8px 8px 30px 8px;
+    }
+    .stamp-title {
+        font-size: 1.8rem;
+    }
+    .stamp-message {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .stamp-signature {
+        font-size: 1.3rem;
+    }
+    .stamp-divider {
+        margin: 5px 0 15px;
+    }
+}
+
+/* ---- Music Toggle ---- */
+.music-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-soft) 0%, var(--lavender) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 100;
+    transition: all 0.3s ease;
+    animation: musicPulse 2s ease-in-out infinite;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px var(--shadow-medium);
+}
+
+.music-toggle.muted {
+    opacity: 0.5;
+    animation: none;
+}
+
+@keyframes musicPulse {
+    0%, 100% { box-shadow: 0 4px 15px var(--shadow-soft); }
+    50% { box-shadow: 0 4px 25px var(--shadow-medium), 0 0 15px rgba(248, 200, 214, 0.4); }
+}
+
+/* ---- Lightbox (photo zoom) ---- */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(90, 62, 75, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+}
+
+.lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-overlay.active img {
+    transform: scale(1);
+}
+
+/* ============================================
+   SCREEN TRANSITION
+   ============================================ */
+.envelope-screen.fade-out {
+    animation: fadeOut 0.8s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.postcard-screen.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .envelope {
+        width: 300px;
+        height: 200px;
+    }
+
+    .sticky-note {
+        padding: 14px 20px;
+        max-width: 250px;
+    }
+
+    .sticky-note p {
+        font-size: 1rem;
+    }
+
+    .postcard-inner {
+        padding: 30px 22px;
+    }
+
+    .postcard-title {
+        font-size: 1.7rem;
+    }
+
+    .postcard-message {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .memories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+
+    .memories-title {
+        font-size: 1.6rem;
+    }
+
+    .floral-corner {
+        width: 80px;
+        height: 80px;
+    }
+
+    .floral-corner::before {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope {
+        width: 220px;
+        height: 155px;
+    }
+
+    .envelope-heart {
+        font-size: 2rem;
+    }
+
+    .envelope-text {
+        font-size: 1rem;
+    }
+
+    .open-btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+
+    .postcard-inner {
+        padding: 25px 18px;
+    }
+
+    .postcard-title {
+        font-size: 1.45rem;
+    }
+
+    .postcard-message {
+        font-size: 0.88rem;
+    }
+
+    .postcard-signature {
+        font-size: 1.1rem;
+    }
+
+    .memories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .postcard-screen {
+        padding: 25px 12px 50px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .memories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* ---- Sparkle animation utility ---- */
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1rem;
+    animation: sparkle 1s ease-in-out forwards;
+}
